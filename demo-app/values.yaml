@@ -1,0 +1,17 @@
+namespace: demo-app
+replicas: 1
+image:
+  repository: hotspurs/demo-app
+  tag: latest
+containerPort: 80
+hpa:
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+service:
+  nodePort: 30088
+resources:
+  requests:
+    cpu: 100m
+  limits:
+    cpu: 600m
