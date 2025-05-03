@@ -8,7 +8,7 @@ spec:
     app: {{ include "demo-app.name" . }}
   ports:
     - protocol: TCP
-      port: {{ include "demo-app.containerPort" . | default 5000 }}
-      targetPort: {{ include "demo-app.containerPort" . | default 5000 }}
+      port: {{ include "demo-app.containerPort" . | default 80 }}
+      targetPort: {{ include "demo-app.containerPort" . | default 80 }}
       nodePort: {{ include "demo-app.service.nodePort" . | default 30088 }}
   type: NodePort
