@@ -15,3 +15,6 @@ resources:
     cpu: 100m
   limits:
     cpu: 600m
+env:
+  - name: API_KEY
+    value: <vault:secret/services/product-reviews-api/TEST#KEY>
