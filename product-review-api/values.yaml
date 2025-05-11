@@ -1,0 +1,17 @@
+namespace: product-review-api
+replicas: 2
+image:
+  repository: hotspurs/product-review-api
+  tag: latest
+containerPort: 8000
+hpa:
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+service:
+  nodePort: 30088
+resources:
+  requests:
+    cpu: 100m
+  limits:
+    cpu: 600m

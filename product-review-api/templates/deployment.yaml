@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "product-review-api.fullname" . }}
+  namespace: {{ include "product-review-api.namespace" . | default "product-review-api" }}
+  labels:
+    app: {{ include "product-review-api.name" . }}
+spec:
+  replicas: {{ include "product-review-api.replicas" . | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ include "product-review-api.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "product-review-api.name" . }}
+    spec:
+      containers:
+      - name: {{ include "product-review-api.name" . }}
+        image: {{ include "product-review-api.image.repository" . }}:{{ include "product-review-api.image.tag" . | default "latest" }}
+        ports:
+        - containerPort: {{ include "product-review-api.containerPort" . | default 5000 }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
