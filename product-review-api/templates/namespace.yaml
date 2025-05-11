@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{ include "product-review-api.namespace" . | default "product-review-api" }}
-  labels:
-    name: {{ include "product-review-api.namespace" . | default "product-review-api" }}

@@ -1,7 +1,7 @@
-namespace: product-review-api
+namespace: product-reviews-api
 replicas: 2
 image:
-  repository: hotspurs/product-review-api
+  repository: hotspurs/product-reviews-api
   tag: latest
 containerPort: 8000
 hpa:
