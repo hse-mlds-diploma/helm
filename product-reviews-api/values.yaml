@@ -16,5 +16,25 @@ resources:
   limits:
     cpu: 600m
 env:
-  - name: API_KEY
-    value: <vault:secret/services/product-reviews-api/TEST#KEY>
+  - name: KAFKA_BOOTSTRAP_SERVERS
+    value: <path:services/data/product-reviews-api#KAFKA_BOOTSTRAP_SERVERS>
+  - name: KAFKA_REVIEWS_TOPIC
+    value: <path:services/data/product-reviews-api#KAFKA_REVIEWS_TOPIC>
+  - name: POSTGRES_DB
+    value: <path:services/data/product-reviews-api#POSTGRES_DB>
+  - name: POSTGRES_HOST
+    value: <path:services/data/product-reviews-api#POSTGRES_HOST>
+  - name: POSTGRES_PASSWORD
+    value: <path:services/data/product-reviews-api#POSTGRES_PASSWORD>
+  - name: POSTGRES_PORT
+    value: <path:services/data/product-reviews-api#POSTGRES_PORT>
+  - name: POSTGRES_USER
+    value: <path:services/data/product-reviews-api#POSTGRES_USER>
+  - name: S3_ACCESS_KEY
+    value: <path:services/data/product-reviews-api#S3_ACCESS_KEY>
+  - name: S3_BUCKET
+    value: <path:services/data/product-reviews-api#S3_BUCKET>
+  - name: S3_ENDPOINT
+    value: <path:services/data/product-reviews-api#S3_ENDPOINT>
+  - name: S3_SECRET_KEY
+    value: <path:services/data/product-reviews-api#S3_SECRET_KEY>
