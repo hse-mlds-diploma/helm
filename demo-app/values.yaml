@@ -17,4 +17,4 @@ resources:
     cpu: 600m
 env:
   - name: API_KEY
-    value: <vault:secret/services/demo-app/TEST#KEY>
+    value: <vault:secrets/services/demo-app/TEST#KEY>
