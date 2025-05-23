@@ -22,3 +22,9 @@ env:
     value: <path:services/data/auto-moderation-api#KAFKA_REVIEWS_TOPIC>
   - name: KAFKA_MODERATION_TOPIC
     value: <path:services/data/auto-moderation-api#KAFKA_MODERATION_TOPIC>
+  - name: KAFKA_MODERATION_TOPIC
+    value: <path:services/data/auto-moderation-api#KAFKA_MODERATION_TOPIC>
+  - name: TEXT_MODERATION_URL
+    value: <path:services/data/auto-moderation-api#TEXT_MODERATION_URL>
+  - name: IMAGE_MODERATION_URL
+    value: <path:services/data/auto-moderation-api#IMAGE_MODERATION_URL>
