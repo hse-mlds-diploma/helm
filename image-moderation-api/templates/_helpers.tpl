@@ -1,44 +1,44 @@
-{{- define "product-reviews-api.fullname" -}}
+{{- define "image-moderation-api.fullname" -}}
 {{ .Release.Name }}-{{ .Chart.Name }}
 {{- end }}
 
-{{- define "product-reviews-api.name" -}}
+{{- define "image-moderation-api.name" -}}
 {{ .Chart.Name }}
 {{- end }}
 
-{{- define "product-reviews-api.namespace" -}}
+{{- define "image-moderation-api.namespace" -}}
 {{ .Values.namespace }}
 {{- end }}
 
-{{- define "product-reviews-api.replicas" -}}
+{{- define "image-moderation-api.replicas" -}}
 {{ .Values.replicas }}
 {{- end }}
-{{- define "product-reviews-api.hpa.minReplicas" -}}
+{{- define "image-moderation-api.hpa.minReplicas" -}}
 {{ .Values.hpa.minReplicas }}
 {{- end }}
 
-{{- define "product-reviews-api.hpa.maxReplicas" -}}
+{{- define "image-moderation-api.hpa.maxReplicas" -}}
 {{ .Values.hpa.maxReplicas }}
 {{- end }}
 
-{{- define "product-reviews-api.image.repository" -}}
+{{- define "image-moderation-api.image.repository" -}}
 {{ .Values.image.repository }}
 {{- end }}
 
-{{- define "product-reviews-api.image.tag" -}}
+{{- define "image-moderation-api.image.tag" -}}
 {{ .Values.image.tag }}
 {{- end }}
 
 
 
-{{- define "product-reviews-api.containerPort" -}}
+{{- define "image-moderation-api.containerPort" -}}
 {{ .Values.containerPort }}
 {{- end }}
 
-{{- define "product-reviews-api.hpa.targetCPUUtilizationPercentage" -}}
+{{- define "image-moderation-api.hpa.targetCPUUtilizationPercentage" -}}
 {{ .Values.hpa.targetCPUUtilizationPercentage }}
 {{- end }}
 
-{{- define "product-reviews-api.service.nodePort" -}}
+{{- define "image-moderation-api.service.nodePort" -}}
 {{ .Values.service.nodePort }}
 {{- end }}
