@@ -1,0 +1,17 @@
+namespace: text-moderation-api
+replicas: 2
+image:
+  repository: hotspurs/text-moderation-api
+  tag: latest
+containerPort: 8000
+hpa:
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+service:
+  nodePort: 30091
+resources:
+  requests:
+    cpu: 100m
+  limits:
+    cpu: 600m

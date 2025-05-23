@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "text-moderation-api.fullname" . }}
+  namespace: {{ include "text-moderation-api.namespace" . | default "text-moderation-api" }}
+  labels:
+    app: {{ include "text-moderation-api.name" . }}
+spec:
+  replicas: {{ include "text-moderation-api.replicas" . | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ include "text-moderation-api.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "text-moderation-api.name" . }}
+    spec:
+      containers:
+      - name: {{ include "text-moderation-api.name" . }}
+        image: {{ include "text-moderation-api.image.repository" . }}:{{ include "text-moderation-api.image.tag" . | default "latest" }}
+        ports:
+        - containerPort: {{ include "text-moderation-api.containerPort" . | default 5000 }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}

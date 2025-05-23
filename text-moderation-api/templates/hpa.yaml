@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "text-moderation-api.fullname" . }}-hpa
+  namespace: {{ include "text-moderation-api.namespace" . | default "text-moderation-api" }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "text-moderation-api.fullname" . }}
+  minReplicas: {{ include "text-moderation-api.hpa.minReplicas" . | default 1 }}
+  maxReplicas: {{ include "text-moderation-api.hpa.maxReplicas" . | default 5 }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ include "text-moderation-api.hpa.targetCPUUtilizationPercentage" . | default 70 }} 
