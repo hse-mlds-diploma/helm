@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "user-ui.fullname" . }}
-  namespace: {{ include "user-ui.namespace" . | default "user-ui" }}
+  namespace: {{ include "user-ui.namespace" . | default "default" }}
   labels:
     app: {{ include "user-ui.name" . }}
 spec:

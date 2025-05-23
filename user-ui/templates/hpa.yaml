@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "user-ui.fullname" . }}-hpa
-  namespace: {{ include "user-ui.namespace" . | default "user-ui" }}
+  namespace: {{ include "user-ui.namespace" . | default "default" }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

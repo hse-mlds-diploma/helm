@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "user-ui.fullname" . }}-service
-  namespace: {{ include "user-ui.namespace" . | default "user-ui" }}
+  namespace: {{ include "user-ui.namespace" . | default "default" }}
 spec:
   selector:
     app: {{ include "user-ui.name" . }}
