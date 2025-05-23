@@ -1,0 +1,24 @@
+namespace: auto-moderation-api
+replicas: 2
+image:
+  repository: hotspurs/auto-moderation-api
+  tag: latest
+containerPort: 8001
+hpa:
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+service:
+  nodePort: 30091
+resources:
+  requests:
+    cpu: 100m
+  limits:
+    cpu: 600m
+env:
+  - name: KAFKA_BOOTSTRAP_SERVERS
+    value: <path:services/data/auto-moderation-api#KAFKA_BOOTSTRAP_SERVERS>
+  - name: KAFKA_REVIEWS_TOPIC
+    value: <path:services/data/auto-moderation-api#KAFKA_REVIEWS_TOPIC>
+  - name: KAFKA_MODERATION_TOPIC
+    value: <path:services/data/auto-moderation-api#KAFKA_MODERATION_TOPIC>
