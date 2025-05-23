@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "user-ui.fullname" . }}
+  namespace: {{ include "user-ui.namespace" . | default "user-ui" }}
+  labels:
+    app: {{ include "user-ui.name" . }}
+spec:
+  replicas: {{ include "user-ui.replicas" . | default 1 }}
+  selector:
+    matchLabels:
+      app: {{ include "user-ui.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "user-ui.name" . }}
+    spec:
+      containers:
+      - name: {{ include "user-ui.name" . }}
+        image: {{ include "user-ui.image.repository" . }}:{{ include "user-ui.image.tag" . | default "latest" }}
+        ports:
+        - containerPort: {{ include "user-ui.containerPort" . | default 5000 }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+        env:
+{{ toYaml .Values.env | indent 10 }}

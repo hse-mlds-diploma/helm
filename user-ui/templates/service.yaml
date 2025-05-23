@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "user-ui.fullname" . }}-service
+  namespace: {{ include "user-ui.namespace" . | default "user-ui" }}
+spec:
+  selector:
+    app: {{ include "user-ui.name" . }}
+  ports:
+    - protocol: TCP
+      port: {{ include "user-ui.containerPort" . | default 80 }}
+      targetPort: {{ include "user-ui.containerPort" . | default 80 }}
+      nodePort: {{ include "user-ui.service.nodePort" . | default 30080 }}
+  type: NodePort

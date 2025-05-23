@@ -1,0 +1,17 @@
+namespace: user-ui
+replicas: 1
+image:
+  repository: hotspurs/user-ui
+  tag: latest
+containerPort: 80
+hpa:
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+service:
+  nodePort: 30080
+resources:
+  requests:
+    cpu: 100m
+  limits:
+    cpu: 600m

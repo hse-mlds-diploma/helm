@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "user-ui.fullname" . }}-hpa
+  namespace: {{ include "user-ui.namespace" . | default "user-ui" }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "user-ui.fullname" . }}
+  minReplicas: {{ include "user-ui.hpa.minReplicas" . | default 1 }}
+  maxReplicas: {{ include "user-ui.hpa.maxReplicas" . | default 5 }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ include "user-ui.hpa.targetCPUUtilizationPercentage" . | default 70 }}
