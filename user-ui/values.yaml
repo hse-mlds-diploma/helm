@@ -1,4 +1,4 @@
-namespace: user-ui
+namespace: default
 replicas: 1
 image:
   repository: hotspurs/user-ui
