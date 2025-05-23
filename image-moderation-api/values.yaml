@@ -1,7 +1,7 @@
-namespace: product-reviews-api
+namespace: image-moderation-api
 replicas: 2
 image:
-  repository: hotspurs/product-reviews-api
+  repository: hotspurs/image-moderation-api
   tag: latest
 containerPort: 8003
 hpa:

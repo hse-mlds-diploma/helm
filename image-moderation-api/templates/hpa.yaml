@@ -1,19 +1,19 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "product-reviews-api.fullname" . }}-hpa
-  namespace: {{ include "product-reviews-api.namespace" . | default "product-reviews-api" }}
+  name: {{ include "image-moderation-api.fullname" . }}-hpa
+  namespace: {{ include "image-moderation-api.namespace" . | default "image-moderation-api" }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "product-reviews-api.fullname" . }}
-  minReplicas: {{ include "product-reviews-api.hpa.minReplicas" . | default 1 }}
-  maxReplicas: {{ include "product-reviews-api.hpa.maxReplicas" . | default 5 }}
+    name: {{ include "image-moderation-api.fullname" . }}
+  minReplicas: {{ include "image-moderation-api.hpa.minReplicas" . | default 1 }}
+  maxReplicas: {{ include "image-moderation-api.hpa.maxReplicas" . | default 5 }}
   metrics:
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: {{ include "product-reviews-api.hpa.targetCPUUtilizationPercentage" . | default 70 }}
+        averageUtilization: {{ include "image-moderation-api.hpa.targetCPUUtilizationPercentage" . | default 70 }}
