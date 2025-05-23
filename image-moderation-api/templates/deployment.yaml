@@ -25,3 +25,5 @@ spec:
             cpu: {{ .Values.resources.requests.cpu }}
           limits:
             cpu: {{ .Values.resources.limits.cpu }}
+        env:
+{{ toYaml .Values.env | indent 10 }}
