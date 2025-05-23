@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "product-reviews-api.fullname" . }}-hpa
+  namespace: {{ include "product-reviews-api.namespace" . | default "product-reviews-api" }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "product-reviews-api.fullname" . }}
+  minReplicas: {{ include "product-reviews-api.hpa.minReplicas" . | default 1 }}
+  maxReplicas: {{ include "product-reviews-api.hpa.maxReplicas" . | default 5 }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ include "product-reviews-api.hpa.targetCPUUtilizationPercentage" . | default 70 }}
