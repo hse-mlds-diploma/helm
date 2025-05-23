@@ -3,7 +3,7 @@ replicas: 2
 image:
   repository: hotspurs/text-moderation-api
   tag: latest
-containerPort: 8000
+containerPort: 8002
 hpa:
   minReplicas: 2
   maxReplicas: 3
